@@ -96,7 +96,7 @@ export const Chat = () => {
           transition: opacity 0.2s, background-color 0.2s;
 
           /* El botón siempre es visible, pero cambia su opacidad */
-          opacity: 0.5;
+          opacity: 1;
         }
 
         /* Cuando el botón NO está deshabilitado (hay texto), se vuelve opaco y usable */
