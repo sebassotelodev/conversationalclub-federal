@@ -39,57 +39,32 @@ export const Chat = () => {
     <>
       <style jsx global>{`
         :root {
-          /* --- ZONA DE PERSONALIZACIÓN DE COLORES ---
-            Aquí puedes cambiar los colores principales para que coincidan con tu marca.
-            He dejado una paleta minimalista en blanco y negro como base.
-          */
-
-          /* Color principal para elementos interactivos (botón de inicio) */
+          /* --- ZONA DE PERSONALIZACIÓN DE COLORES --- */
           --chat--color-primary: #000000;
-
-          /* Color de fondo para los mensajes del USUARIO */
           --chat--color-secondary: #000000;
-
-          /* Color de fondo para los mensajes del BOT */
-          --chat--message--bot--background: #f3f4f6; /* Un gris muy claro */
-
-          /* Color del texto del BOT */
-          --chat--message--bot--color: #111827; /* Negro suave */
-
-          /* Color del texto del USUARIO */
-          --chat--message--user--color: #ffffff; /* Blanco */
-
-          /* Color del texto principal y encabezados */
+          --chat--message--bot--background: #f3f4f6;
+          --chat--message--bot--color: #111827;
+          --chat--message--user--color: #ffffff;
           --chat--color-dark: #111827;
-
-          /* Color de fondos generales y bordes */
           --chat--color-white: #ffffff;
-          --chat--color-light: #f9fafb; /* Fondo del área de mensajes */
-          --chat--color-medium: #e5e7eb; /* Bordes */
+          --chat--color-light: #f9fafb;
+          --chat--color-medium: #e5e7eb;
 
-          /* --- AJUSTES DE DISEÑO MINIMALISTA (Generalmente no necesitas tocar esto) --- */
-
-          /* Tamaños y Espaciado */
+          /* --- AJUSTES DE DISEÑO MINIMALISTA --- */
           --chat--spacing: 16px;
           --chat--border-radius: 12px;
           --chat--window--width: 360px;
-          --chat--window--height: 90vh; /* Usa altura relativa para adaptarse mejor */
-          --chat--window--max-height: 640px; /* Un máximo para pantallas grandes */
-
-          /* Botón de Inicio */
+          --chat--window--height: 90vh;
+          --chat--window--max-height: 640px;
           --chat--toggle--size: 50px;
           --chat--toggle--background: var(--chat--color-primary);
           --chat--toggle--color: var(--chat--color-white);
-
-          /* Encabezado */
           --chat--header--background: var(--chat--color-white);
           --chat--header--color: var(--chat--color-dark);
           --chat--header--padding: 12px 16px;
           --chat--header--border-bottom: 1px solid var(--chat--color-medium);
           --chat--heading--font-size: 1rem;
           --chat--subtitle--font-size: 0.8rem;
-
-          /* Mensajes */
           --chat--message--padding: 10px 14px;
           --chat--message--font-size: 0.9rem;
           --chat--message--border-radius: 18px;
@@ -98,33 +73,31 @@ export const Chat = () => {
         }
 
         /* --- Pequeños ajustes para refinar el look --- */
-
-        /* Posicionamiento y sombra */
         #n8n-chat-launcher {
           bottom: 20px !important;
           right: 20px !important;
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
         }
-
         #n8n-chat-window {
           right: 20px !important;
           bottom: 80px !important;
           box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1) !important;
         }
-
-        /* Estilo de "cola" en las burbujas de chat */
         .n8n-chat-message-bot {
           border-bottom-left-radius: 4px !important;
         }
-
         .n8n-chat-message-user {
           border-bottom-right-radius: 4px !important;
         }
 
-        /* --- Diseño Adaptable (Responsive) --- */
+        /* --- **CORRECCIÓN PARA MÓVILES** --- */
         @media (max-width: 600px) {
           #n8n-chat-window {
-            /* En móviles, el chat ocupa toda la pantalla para una mejor experiencia */
+            /* Se convierte la ventana en un contenedor flexible */
+            display: flex !important;
+            flex-direction: column !important;
+
+            /* Se mantiene el estilo de pantalla completa */
             width: 100% !important;
             height: 100% !important;
             max-height: 100% !important;
@@ -136,13 +109,30 @@ export const Chat = () => {
             border: none !important;
           }
 
+          /* El contenedor principal de los mensajes también se hace flexible */
+          .n8n-chat-container {
+            display: flex !important;
+            flex-direction: column !important;
+            height: 100% !important;
+          }
+
+          /* El área de mensajes ahora es flexible y se encoge/expande */
+          .n8n-chat-messages {
+            flex: 1 !important; /* **LA CLAVE ESTÁ AQUÍ** */
+            overflow-y: auto !important;
+          }
+
+          /* El área de input se mantiene fija en la parte inferior */
+          .n8n-chat-input-container {
+            flex-shrink: 0; /* Evita que el área de input se encoja */
+          }
+
           #n8n-chat-launcher {
             bottom: 15px !important;
             right: 15px !important;
           }
         }
       `}</style>
-      {/* Este div es el objetivo donde n8n montará el chatbot. */}
       <div id="n8n-chat"></div>
     </>
   );
