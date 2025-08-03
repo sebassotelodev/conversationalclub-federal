@@ -72,7 +72,40 @@ export const Chat = () => {
           --chat--message--bot--border: none;
         }
 
-        /* --- Pequeños ajustes para refinar el look --- */
+        /* --- **NUEVO** - Estructura del Input y Botón de Enviar --- */
+        .n8n-chat-input-container {
+          display: flex;
+          align-items: center;
+          gap: 8px; /* Espacio entre el campo de texto y el botón */
+        }
+
+        #n8n-chat-input {
+          flex-grow: 1; /* El campo de texto ocupa el espacio disponible */
+        }
+
+        #n8n-chat-send-button {
+          display: flex !important;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%; /* Botón circular */
+          background-color: var(--chat--color-primary);
+          color: var(--chat--color-white);
+          flex-shrink: 0; /* Evita que el botón se encoja */
+          transition: opacity 0.2s, background-color 0.2s;
+
+          /* El botón siempre es visible, pero cambia su opacidad */
+          opacity: 0.5;
+        }
+
+        /* Cuando el botón NO está deshabilitado (hay texto), se vuelve opaco y usable */
+        #n8n-chat-send-button:not([disabled]) {
+          opacity: 1;
+          cursor: pointer;
+        }
+
+        /* --- Ajustes de Posicionamiento --- */
         #n8n-chat-launcher {
           bottom: 20px !important;
           right: 20px !important;
@@ -90,14 +123,11 @@ export const Chat = () => {
           border-bottom-right-radius: 4px !important;
         }
 
-        /* --- **CORRECCIÓN PARA MÓVILES** --- */
+        /* --- **CORRECCIÓN MEJORADA PARA MÓVILES** --- */
         @media (max-width: 600px) {
           #n8n-chat-window {
-            /* Se convierte la ventana en un contenedor flexible */
             display: flex !important;
             flex-direction: column !important;
-
-            /* Se mantiene el estilo de pantalla completa */
             width: 100% !important;
             height: 100% !important;
             max-height: 100% !important;
@@ -109,22 +139,20 @@ export const Chat = () => {
             border: none !important;
           }
 
-          /* El contenedor principal de los mensajes también se hace flexible */
           .n8n-chat-container {
             display: flex !important;
             flex-direction: column !important;
             height: 100% !important;
           }
 
-          /* El área de mensajes ahora es flexible y se encoge/expande */
           .n8n-chat-messages {
-            flex: 1 !important; /* **LA CLAVE ESTÁ AQUÍ** */
+            flex: 1 !important;
             overflow-y: auto !important;
           }
 
-          /* El área de input se mantiene fija en la parte inferior */
           .n8n-chat-input-container {
-            flex-shrink: 0; /* Evita que el área de input se encoja */
+            flex-shrink: 0;
+            padding: 8px !important; /* Un poco menos de padding en móvil */
           }
 
           #n8n-chat-launcher {
