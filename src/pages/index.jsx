@@ -53,7 +53,7 @@ const ConversationalClubLanding = () => {
           >
             <X className="w-5 h-5" />
           </button>
-          
+
           <div className="aspect-[9/16] bg-gradient-to-br from-[#112C3E] to-[#0C212D] rounded-2xl overflow-hidden mx-auto max-h-[70vh] border border-white/10 shadow-inner">
             <iframe
               src="https://www.youtube.com/embed/jNw2LFNI1zc"
@@ -75,11 +75,11 @@ const ConversationalClubLanding = () => {
         <div className="absolute top-20 left-20 w-64 h-64 bg-gradient-to-r from-[#EE7203] to-[#FF3816] rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-32 right-20 w-96 h-96 bg-gradient-to-r from-[#495463] to-[#112C3E] rounded-full blur-3xl animate-slowBounce"></div>
         <div className="absolute top-1/2 left-1/4 w-48 h-48 bg-gradient-to-r from-[#FF3816] to-[#EE7203] rounded-full blur-3xl animate-float"></div>
-        
+
         {/* Additional floating elements */}
         <div className="absolute top-1/4 right-1/3 w-32 h-32 bg-gradient-to-r from-[#EE7203]/20 to-[#FF3816]/20 rounded-full blur-2xl animate-slowFloat"></div>
         <div className="absolute bottom-1/4 left-1/3 w-24 h-24 bg-gradient-to-r from-[#495463]/30 to-[#112C3E]/30 rounded-full blur-xl animate-float delay-1000"></div>
-        
+
         {/* Sparkle effects */}
         <div className="absolute top-1/3 left-1/5 w-2 h-2 bg-[#EE7203] rounded-full animate-twinkle"></div>
         <div className="absolute top-2/3 right-1/5 w-1 h-1 bg-[#FF3816] rounded-full animate-twinkle delay-500"></div>
@@ -91,7 +91,7 @@ const ConversationalClubLanding = () => {
         ref={homeRef}
         className="relative z-10 flex justify-between items-center p-6 max-w-7xl mx-auto"
       >
-        <button 
+        <button
           onClick={handleLogoClick}
           className="rounded-xl flex items-center justify-center overflow-hidden hover:scale-110 transition-all duration-500 hover:rotate-6 cursor-pointer group"
         >
@@ -113,7 +113,7 @@ const ConversationalClubLanding = () => {
             { label: "Home", ref: homeRef },
             { label: "About", ref: aboutRef },
             { label: "FAQ", ref: faqRef },
-            { label: "Contact", ref: contactRef }
+            { label: "Contact", ref: contactRef },
           ].map((item, index) => (
             <button
               key={item.label}
@@ -139,65 +139,119 @@ const ConversationalClubLanding = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-20 pb-32">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
-            <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-lg rounded-full text-white/90 text-sm border border-white/20 hover:border-[#EE7203]/30 transition-all duration-300 shadow-lg">
-              <MessageCircle className="w-4 h-4 mr-2 text-[#EE7203]" />
-              <Sparkles className="w-3 h-3 mr-1 animate-pulse" />
-              PRACTICE ENGLISH WITH CONFIDENCE
-            </div>
+  {/* Badge mejorado */}
+  <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-lg rounded-full text-white/90 text-sm border border-white/20 hover:border-[#EE7203]/30 transition-all duration-300 shadow-lg">
+    <MessageCircle className="w-4 h-4 mr-2 text-[#EE7203]" />
+    <Sparkles className="w-3 h-3 mr-1 animate-pulse" />
+    PRACTICE ENGLISH WITH CONFIDENCE
+  </div>
 
-            <h1 className="text-5xl lg:text-6xl font-bold text-white leading-tight">
-              Conversational
-              <span className="block bg-gradient-to-r from-[#EE7203] via-[#FF3816] to-[#EE7203] bg-clip-text text-transparent animate-gradient bg-300% drop-shadow-lg">
-                English Club
-              </span>
-            </h1>
+  {/* Título principal mejorado */}
+  <div className="space-y-4">
+    <h1 className="text-5xl lg:text-6xl font-bold text-white leading-tight">
+      Your Success
+      <span className="block bg-gradient-to-r from-[#EE7203] via-[#FF3816] to-[#EE7203] bg-clip-text text-transparent animate-gradient bg-300% drop-shadow-lg">
+        Our Priority
+      </span>
+    </h1>
 
-            <p className="text-xl text-white/80 leading-relaxed drop-shadow-sm">
-              Join our free online workshop and practice English in an immersive
-              way with Morgan Robinson, a native speaker from London. Boost your
-              confidence through real conversations!
-            </p>
+    {/* Subtítulo destacado */}
+    <div className="relative">
+      <p className="text-2xl lg:text-3xl font-semibold text-white leading-relaxed drop-shadow-sm">
+        <span className="bg-gradient-to-r from-[#EE7203] to-[#FF3816] bg-clip-text text-transparent">
+          Exclusive Free
+        </span>{" "}
+        <span className="text-white">Conversational Course</span>
+      </p>
+    </div>
+  </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button
-                onClick={handleRegisterClick}
-                className="bg-gradient-to-r from-[#EE7203] to-[#FF3816] text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl hover:shadow-[#EE7203]/30 transition-all duration-300 transform hover:scale-105 relative overflow-hidden group border border-white/10"
-              >
-                <span className="relative z-10 flex items-center justify-center">
-                  Register with Bot
-                  <span className="ml-2 animate-bounce group-hover:translate-x-1 transition-transform">→</span>
+  {/* Descripción mejorada */}
+  <div className="space-y-4 max-w-3xl">
+    <p className="text-xl text-white/85 leading-relaxed">
+      Take language learning to the next level! Step confidently into
+      new opportunities by developing real-world language skills.
+    </p>
+
+    <p className="text-xl text-white/85 leading-relaxed">
+      Our{" "}
+      <span className="font-semibold text-[#EE7203]">free course</span> is designed{" "}
+      <span className="font-semibold text-white">exclusively for our valued clients</span>{" "}
+      to help you thrive in conversations, not just fill in the blanks.
+    </p>
+  </div>
+
+  {/* Botones */}
+  <div className="flex flex-col sm:flex-row gap-4 pt-4">
+    <button
+      onClick={handleRegisterClick}
+      className="bg-gradient-to-r from-[#EE7203] to-[#FF3816] text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl hover:shadow-[#EE7203]/30 transition-all duration-300 transform hover:scale-105 relative overflow-hidden group border border-white/10"
+    >
+      <span className="relative z-10 flex items-center justify-center">
+        Register with Bot
+        <span className="ml-2 animate-bounce group-hover:translate-x-1 transition-transform">
+          →
+        </span>
+      </span>
+      <div className="absolute inset-0 bg-gradient-to-r from-[#FF3816] to-[#EE7203] opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+    </button>
+
+    <button
+      onClick={() => setShowVideoModal(true)}
+      className="border-2 border-white/30 text-white px-8 py-4 rounded-full font-semibold hover:bg-gradient-to-r hover:from-white/10 hover:to-white/5 hover:border-[#EE7203]/50 transition-all duration-300 flex items-center justify-center gap-2 group backdrop-blur-sm"
+    >
+      <Play className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
+      Learn More
+    </button>
+  </div>
+
+  {/* Stats mejoradas */}
+  <div className="grid grid-cols-3 gap-6 pt-8">
+    {[
+      {
+        value: "FREE",
+        label: "Workshop",
+        icon: <Award className="w-6 h-6" />,
+        exclusive: true,
+      },
+      {
+        value: "8",
+        label: "Sessions",
+        icon: <Calendar className="w-6 h-6" />,
+        exclusive: false,
+      },
+      {
+        value: "10",
+        label: "Max per Group",
+        icon: <Users className="w-6 h-6" />,
+        exclusive: false,
+      },
+    ].map((stat, index) => (
+      <div key={index} className="text-center group cursor-default">
+        <div className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-[#EE7203]/30 transition-all duration-300 hover:scale-105 overflow-hidden">
+          {/* Línea Exclusive solo en la primera card */}
+          {stat.exclusive && (
+            <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#EE7203] via-[#FF3816] to-[#EE7203]">
+              <div className="absolute -top-2 left-1/2 transform -translate-x-1/2">
+                <span className="bg-gradient-to-r from-[#EE7203] to-[#FF3816] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">
+                  Exclusive
                 </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-[#FF3816] to-[#EE7203] opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-              </button>
-              
-              <button
-                onClick={() => setShowVideoModal(true)}
-                className="border-2 border-white/30 text-white px-8 py-4 rounded-full font-semibold hover:bg-gradient-to-r hover:from-white/10 hover:to-white/5 hover:border-[#EE7203]/50 transition-all duration-300 flex items-center justify-center gap-2 group backdrop-blur-sm"
-              >
-                <Play className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
-                Learn More
-              </button>
+              </div>
             </div>
-
-            {/* Enhanced Quick Stats */}
-            <div className="grid grid-cols-3 gap-6 pt-8">
-              {[
-                { value: "FREE", label: "Workshop", icon: <Award className="w-6 h-6" /> },
-                { value: "8", label: "Sessions", icon: <Calendar className="w-6 h-6" /> },
-                { value: "10", label: "Max per Group", icon: <Users className="w-6 h-6" /> }
-              ].map((stat, index) => (
-                <div key={index} className="text-center group cursor-default">
-                  <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-2xl p-4 border border-white/10 hover:border-[#EE7203]/30 transition-all duration-300 hover:scale-105">
-                    <div className="text-[#EE7203] mb-2 flex justify-center group-hover:scale-110 transition-transform duration-300">
-                      {stat.icon}
-                    </div>
-                    <div className="text-3xl font-bold text-white group-hover:text-[#EE7203] transition-colors duration-300">{stat.value}</div>
-                    <div className="text-white/70">{stat.label}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
+          )}
+          
+          <div className="text-[#EE7203] mb-3 flex justify-center group-hover:scale-110 transition-transform duration-300 mt-2">
+            {stat.icon}
           </div>
+          <div className="text-3xl font-bold text-white group-hover:text-[#EE7203] transition-colors duration-300 mb-2">
+            {stat.value}
+          </div>
+          <div className="text-white/70 font-medium">{stat.label}</div>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
 
           <div className="relative">
             <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/20 shadow-2xl hover:shadow-3xl hover:shadow-[#EE7203]/10 transition-all duration-500 hover:scale-[1.02]">
@@ -237,10 +291,13 @@ const ConversationalClubLanding = () => {
               <div className="space-y-4">
                 {[
                   "Business English Specialist",
-                  "Intercultural Communication Expert", 
-                  "Dynamic & Fun Teaching Style"
+                  "Intercultural Communication Expert",
+                  "Dynamic & Fun Teaching Style",
                 ].map((feature, index) => (
-                  <div key={index} className="flex items-center text-white/90 group hover:text-white transition-colors duration-300">
+                  <div
+                    key={index}
+                    className="flex items-center text-white/90 group hover:text-white transition-colors duration-300"
+                  >
                     <CheckCircle className="w-5 h-5 text-[#EE7203] mr-3 group-hover:scale-110 transition-transform duration-300" />
                     {feature}
                   </div>
@@ -312,7 +369,7 @@ const ConversationalClubLanding = () => {
                 icon: <Calendar className="w-6 h-6" />,
                 question: "When does it start?",
                 answer:
-                  "The first session is on Wednesday, August 20th. There are 8 weekly sessions, 1 hour each, over the course of two months.",
+                  "It takes off on August 20th. There will be different groups on Wednesday and Friday depending on your level and interests. We will keep you posted no later than Mon 18th when your class has been scheduled.",
               },
               {
                 icon: <Globe className="w-6 h-6" />,
@@ -365,7 +422,7 @@ const ConversationalClubLanding = () => {
           {/* Background decorative elements */}
           <div className="absolute top-4 left-4 w-16 h-16 bg-gradient-to-r from-[#EE7203]/10 to-[#FF3816]/10 rounded-full blur-xl"></div>
           <div className="absolute bottom-4 right-4 w-20 h-20 bg-gradient-to-r from-[#FF3816]/10 to-[#EE7203]/10 rounded-full blur-xl"></div>
-          
+
           <h2 className="text-4xl font-bold text-white mb-6 relative z-10">
             Ready to Start Speaking English with Confidence?
           </h2>
@@ -382,15 +439,17 @@ const ConversationalClubLanding = () => {
               <span className="relative z-10 flex items-center">
                 <MessageCircle className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
                 <span className="ml-2">Register Now with Bot</span>
-                <span className="ml-2 animate-bounce group-hover:translate-x-1 transition-transform">→</span>
+                <span className="ml-2 animate-bounce group-hover:translate-x-1 transition-transform">
+                  →
+                </span>
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-[#FF3816] to-[#EE7203] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </button>
-            
+
             <div className="flex items-center gap-2 text-white/80 bg-white/5 backdrop-blur-sm rounded-full px-6 py-3 border border-white/10">
               <span className="w-2 h-2 bg-[#EE7203] rounded-full animate-pulse shadow-lg shadow-[#EE7203]/50"></span>
-              Completely FREE 
-              <span className="w-2 h-2 bg-[#FF3816] rounded-full animate-pulse shadow-lg shadow-[#FF3816]/50"></span> 
+              Completely FREE
+              <span className="w-2 h-2 bg-[#FF3816] rounded-full animate-pulse shadow-lg shadow-[#FF3816]/50"></span>
               Part of your Further experience
             </div>
           </div>
@@ -404,43 +463,99 @@ const ConversationalClubLanding = () => {
 
       <style jsx>{`
         @keyframes float {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-20px) rotate(180deg); }
+          0%,
+          100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-20px) rotate(180deg);
+          }
         }
         @keyframes slowFloat {
-          0%, 100% { transform: translateY(0px) translateX(0px); }
-          33% { transform: translateY(-15px) translateX(10px); }
-          66% { transform: translateY(-5px) translateX(-10px); }
+          0%,
+          100% {
+            transform: translateY(0px) translateX(0px);
+          }
+          33% {
+            transform: translateY(-15px) translateX(10px);
+          }
+          66% {
+            transform: translateY(-5px) translateX(-10px);
+          }
         }
         @keyframes slowBounce {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.05); }
+          0%,
+          100% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.05);
+          }
         }
         @keyframes twinkle {
-          0%, 100% { opacity: 0.3; transform: scale(1); }
-          50% { opacity: 1; transform: scale(1.2); }
+          0%,
+          100% {
+            opacity: 0.3;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 1;
+            transform: scale(1.2);
+          }
         }
         @keyframes gradient {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
         }
         @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
         }
         @keyframes scaleIn {
-          from { opacity: 0; transform: scale(0.9); }
-          to { opacity: 1; transform: scale(1); }
+          from {
+            opacity: 0;
+            transform: scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
         }
-        .animate-float { animation: float 6s ease-in-out infinite; }
-        .animate-slowFloat { animation: slowFloat 8s ease-in-out infinite; }
-        .animate-slowBounce { animation: slowBounce 4s ease-in-out infinite; }
-        .animate-twinkle { animation: twinkle 2s ease-in-out infinite; }
-        .animate-gradient { animation: gradient 3s ease infinite; }
-        .animate-fadeIn { animation: fadeIn 0.3s ease-out; }
-        .animate-scaleIn { animation: scaleIn 0.3s ease-out; }
-        .bg-300% { background-size: 300% 300%; }
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+        .animate-slowFloat {
+          animation: slowFloat 8s ease-in-out infinite;
+        }
+        .animate-slowBounce {
+          animation: slowBounce 4s ease-in-out infinite;
+        }
+        .animate-twinkle {
+          animation: twinkle 2s ease-in-out infinite;
+        }
+        .animate-gradient {
+          animation: gradient 3s ease infinite;
+        }
+        .animate-fadeIn {
+          animation: fadeIn 0.3s ease-out;
+        }
+        .animate-scaleIn {
+          animation: scaleIn 0.3s ease-out;
+        }
+        .bg-300% {
+          background-size: 300% 300%;
+        }
       `}</style>
     </div>
   );
