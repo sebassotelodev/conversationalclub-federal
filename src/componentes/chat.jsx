@@ -4,36 +4,37 @@ import { createChat } from "@n8n/chat";
 
 export const Chat = () => {
   useEffect(() => {
-    createChat({
-      webhookUrl: `${process.env.NEXT_PUBLIC_KEYIA}`,
-      webhookConfig: {
-        method: "POST",
-        headers: {},
+  createChat({
+    webhookUrl: `${process.env.NEXT_PUBLIC_KEYIA}`,
+    webhookConfig: {
+      method: "POST",
+      headers: {},
+    },
+    target: "#n8n-chat",
+    mode: "window",
+    chatInputKey: "chatInput",
+    chatSessionKey: "sessionId",
+    loadPreviousSession: true,
+    metadata: {},
+    showWelcomeScreen: false,
+    defaultLanguage: "en",
+    initialMessages: [
+      "Hello! 👋",
+      "I’m Further’s assistant. I’m going to ask you a few questions.",
+    ],
+    i18n: {
+      en: {
+        title: "Virtual Assistant",
+        subtitle: "I’m going to ask you a few questions.",
+        footer: "",
+        getStarted: "New Conversation",
+        inputPlaceholder: "Type your question...",
       },
-      target: "#n8n-chat",
-      mode: "window",
-      chatInputKey: "chatInput",
-      chatSessionKey: "sessionId",
-      loadPreviousSession: true,
-      metadata: {},
-      showWelcomeScreen: false,
-      defaultLanguage: "en",
-      initialMessages: [
-        "Hola! 👋",
-        "Soy el asistente de Further, Te voy a hacer unas Preguntas",
-      ],
-      i18n: {
-        en: {
-          title: "Asistente Virtual",
-          subtitle: "Te voy a hacer unas preguntas.",
-          footer: "",
-          getStarted: "Nueva Conversación",
-          inputPlaceholder: "Escribe tu pregunta...",
-        },
-      },
-      enableStreaming: false,
-    });
-  }, []);
+    },
+    enableStreaming: false,
+  });
+}, []);
+
 
   return (
     <>
