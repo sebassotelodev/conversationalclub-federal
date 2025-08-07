@@ -7,8 +7,8 @@ function Layout({ children }) {
   return (
     <div style={{ display: "grid" }}>
       <Head>
-        <title>Conversational Club</title>
-        <meta name="description" content="Conversational Club." />
+        <title>Conversational Club | Further</title>
+        <meta name="description" content="Conversational Club | Further" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
