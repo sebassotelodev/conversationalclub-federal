@@ -252,7 +252,7 @@ const ConversationalClubLanding = () => {
                     {stat.exclusive && (
                       <>
                         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#EE7203] via-[#FF3816] to-[#EE7203] animate-gradient bg-300%"></div>
-                        <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
+                        <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 z-10">
                           <div className="bg-gradient-to-r from-[#EE7203] to-[#FF3816] text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-xl border border-white/20 relative overflow-hidden group-hover:scale-110 transition-all duration-300">
                             <span className="relative z-10 flex items-center gap-1">
                               <Sparkles className="w-3 h-3 animate-pulse" />
