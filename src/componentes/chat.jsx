@@ -25,12 +25,10 @@ export const Chat = ({ isVisible, onToggle }) => {
       initialMessages: [
         "Hello! 👋",
         "I'm Further's registration assistant for the Conversational Club.",
-        "I'll help you secure your spot with Morgan Robinson!",
       ],
       i18n: {
         en: {
           title: "Conversational Club Registration",
-          subtitle: "Let's get you registered with Morgan!",
           footer: "",
           getStarted: "Start Registration",
           inputPlaceholder: "Type your message here...",

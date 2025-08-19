@@ -15,6 +15,8 @@ import {
   TrendingUp,
   Target,
   Zap,
+  MapPin,
+  Building,
 } from "lucide-react";
 import { Chat } from "@/componentes/chat";
 
@@ -52,15 +54,15 @@ const ConversationalClubLanding = () => {
           <button
             onClick={() => setShowVideoModal(false)}
             className="absolute -top-4 -right-4 bg-gradient-to-r from-[#FF3816] to-[#EE7203] text-white rounded-full p-3 hover:shadow-xl hover:scale-110 transition-all duration-300 z-10 border-2 border-white/20"
-            aria-label="Cerrar video"
+            aria-label="Close video"
           >
             <X className="w-5 h-5" />
           </button>
 
           <div className="aspect-[9/16] bg-gradient-to-br from-[#112C3E] to-[#0C212D] rounded-2xl overflow-hidden mx-auto max-h-[70vh] border border-white/10 shadow-inner">
             <iframe
-              src="https://www.youtube.com/embed/jNw2LFNI1zc"
-              title="Meet Morgan Robinson - Your English Coach"
+              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+              title="Further Academy - Conversational Club Presentation"
               className="w-full h-full rounded-2xl"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
@@ -70,6 +72,13 @@ const ConversationalClubLanding = () => {
       </div>
     );
   };
+
+  const cities = [
+    { name: "Mar del Plata", icon: "🏖️" },
+    { name: "Rosario", icon: "🌆" },
+    { name: "Córdoba", icon: "🏛️" },
+    { name: "Salta", icon: "⛰️" }
+  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#112C3E] via-[#0C212D] to-[#112C3E] relative overflow-hidden">
@@ -142,13 +151,16 @@ const ConversationalClubLanding = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-20 pb-32">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
-            {/* Enhanced Badge with B1+ requirement */}
+            {/* Enhanced Badge with B1+ requirement and in-person */}
             <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-lg rounded-full text-white/90 text-sm border border-white/20 hover:border-[#EE7203]/30 transition-all duration-300 shadow-lg">
               <MessageCircle className="w-4 h-4 mr-2 text-[#EE7203]" />
               <Sparkles className="w-3 h-3 mr-1 animate-pulse" />
               PRACTICE ENGLISH WITH CONFIDENCE
               <span className="ml-2 px-2 py-1 bg-gradient-to-r from-[#EE7203] to-[#FF3816] rounded-full text-xs font-bold">
                 B1+
+              </span>
+              <span className="ml-2 px-2 py-1 bg-gradient-to-r from-[#495463] to-[#112C3E] rounded-full text-xs font-bold">
+                IN PERSON
               </span>
             </div>
 
@@ -172,6 +184,10 @@ const ConversationalClubLanding = () => {
                 <p className="text-lg text-white/70 mt-2 font-medium">
                   For Intermediate to Advanced Learners (B1 Level & Above)
                 </p>
+                <p className="text-lg text-white/70 mt-1 font-medium flex items-center gap-2">
+                  <MapPin className="w-4 h-4 text-[#EE7203]" />
+                  In person in 4 cities in Argentina
+                </p>
               </div>
             </div>
 
@@ -179,17 +195,35 @@ const ConversationalClubLanding = () => {
             <div className="space-y-4 max-w-3xl">
               <p className="text-xl text-white/85 leading-relaxed">
                 Take language learning to the next level! Step confidently into
-                new opportunities by developing real-world language skills.
+                new opportunities by developing real-world language skills in person.
               </p>
 
               <p className="text-xl text-white/85 leading-relaxed">
                 Our{" "}
-                <span className="font-semibold text-[#EE7203]">free course</span> is designed{" "}
+                <span className="font-semibold text-[#EE7203]">free in-person course</span> is designed{" "}
                 <span className="font-semibold text-white">exclusively for our valued clients</span>{" "}
                 to help you thrive in conversations, not just fill in the blanks.
               </p>
 
-              {/* New B1+ requirement highlight */}
+              {/* Cities available */}
+              <div className="bg-gradient-to-r from-[#EE7203]/10 to-[#FF3816]/10 border border-[#EE7203]/30 rounded-2xl p-4 backdrop-blur-sm">
+                <div className="flex items-center gap-3 mb-3">
+                  <Building className="w-5 h-5 text-[#EE7203]" />
+                  <p className="text-white/90 font-medium">
+                    <span className="text-[#EE7203] font-bold">Available in:</span>
+                  </p>
+                </div>
+                <div className="grid grid-cols-2 gap-2">
+                  {cities.map((city, index) => (
+                    <div key={index} className="flex items-center gap-2 text-white/80">
+                      <span className="text-lg">{city.icon}</span>
+                      <span className="font-medium">{city.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* B1+ requirement highlight */}
               <div className="bg-gradient-to-r from-[#EE7203]/10 to-[#FF3816]/10 border border-[#EE7203]/30 rounded-2xl p-4 backdrop-blur-sm">
                 <div className="flex items-center gap-3">
                   <Target className="w-5 h-5 text-[#EE7203]" />
@@ -278,75 +312,88 @@ const ConversationalClubLanding = () => {
             </div>
           </div>
 
-          {/* Enhanced Morgan's Profile Card */}
+          {/* Course Overview Video Section */}
           <div className="relative">
             <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/20 shadow-2xl hover:shadow-3xl hover:shadow-[#EE7203]/10 transition-all duration-500 hover:scale-[1.02]">
-              {/* Enhanced Morgan's Image - Large */}
-              <div className="w-full h-80 bg-gradient-to-br from-[#495463] to-[#112C3E] rounded-2xl mb-6 flex items-center justify-center overflow-hidden relative border border-white/10 shadow-inner">
-                <Image
-                  src="/morgan.jpg"
-                  alt="Morgan Robinson"
-                  fill
-                  className="object-cover rounded-2xl hover:scale-105 transition-transform duration-500"
-                  style={{ zIndex: 1 }}
-                />
-                {/* Enhanced overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-2xl"></div>
+              {/* Video Container - Horizontal */}
+              <div className="relative w-full aspect-video bg-gradient-to-br from-[#495463] to-[#112C3E] rounded-2xl mb-6 overflow-hidden border border-white/10 shadow-inner group cursor-pointer">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10"></div>
                 
-                {/* Level indicator badge */}
-                <div className="absolute top-4 right-4 bg-gradient-to-r from-[#EE7203] to-[#FF3816] text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg border border-white/20">
-                  Native Speaker
+                {/* Play button overlay */}
+                <div className="absolute inset-0 flex items-center justify-center z-20">
+                  <div className="bg-gradient-to-r from-[#EE7203] to-[#FF3816] rounded-full p-6 shadow-2xl group-hover:scale-110 transition-all duration-300 border-4 border-white/20">
+                    <Play className="w-8 h-8 text-white fill-current" />
+                  </div>
+                </div>
+
+                {/* Placeholder background */}
+                <div className="w-full h-full bg-gradient-to-br from-[#112C3E] via-[#495463] to-[#0C212D] flex items-center justify-center">
+                  <div className="text-center">
+                    <MessageCircle className="w-16 h-16 text-[#EE7203] mx-auto mb-4 opacity-60" />
+                    <p className="text-white/60 font-medium">Course Overview Video</p>
+                  </div>
+                </div>
+
+                {/* Live indicator */}
+                <div className="absolute top-4 right-4 bg-gradient-to-r from-[#EE7203] to-[#FF3816] text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg border border-white/20 z-30">
+                  In-Person Classes
                 </div>
               </div>
 
-              <div className="flex items-center mb-6 group">
-                <div className="w-12 h-12 bg-gradient-to-r from-[#EE7203] to-[#FF3816] rounded-full flex items-center justify-center mr-4 overflow-hidden relative border-2 border-white/20 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <Image
-                    src="/morgan.jpg"
-                    alt="Morgan Robinson"
-                    fill
-                    className="object-cover rounded-full"
-                  />
-                </div>
-                <div>
-                  <h3 className="text-white font-semibold text-lg flex items-center">
-                    Meet Morgan Robinson
-                    <Star className="w-4 h-4 ml-2 text-[#EE7203] animate-pulse" />
+              {/* Course Information */}
+              <div className="space-y-6">
+                <div className="text-center">
+                  <h3 className="text-white font-bold text-2xl mb-2">
+                    Conversational Club In Person
                   </h3>
-                  <p className="text-white/70 flex items-center gap-2">
-                    Native English Speaker from London
-                    <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse shadow-sm shadow-green-400/50"></span>
+                  <p className="text-white/70 flex items-center justify-center gap-2">
+                    <MapPin className="w-4 h-4 text-[#EE7203]" />
+                    4 cities available in Argentina
                   </p>
                 </div>
-              </div>
 
-              <div className="space-y-4">
-                {[
-                  { text: "Business English Specialist", icon: <TrendingUp className="w-4 h-4" /> },
-                  { text: "Intercultural Communication Expert", icon: <Globe className="w-4 h-4" /> },
-                  { text: "Dynamic & Fun Teaching Style", icon: <Zap className="w-4 h-4" /> },
-                ].map((feature, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center text-white/90 group hover:text-white transition-colors duration-300 hover:bg-white/5 rounded-lg p-2 -m-2"
-                  >
-                    <div className="text-[#EE7203] mr-3 group-hover:scale-110 transition-transform duration-300">
-                      {feature.icon}
+                {/* Course Features */}
+                <div className="space-y-4">
+                  {[
+                    { text: "Interactive in-person classes", icon: <Users className="w-4 h-4" /> },
+                    { text: "Qualified native teachers", icon: <Star className="w-4 h-4" /> },
+                    { text: "Dynamic and motivating environment", icon: <Zap className="w-4 h-4" /> },
+                  ].map((feature, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center text-white/90 group hover:text-white transition-colors duration-300 hover:bg-white/5 rounded-lg p-2 -m-2"
+                    >
+                      <div className="text-[#EE7203] mr-3 group-hover:scale-110 transition-transform duration-300">
+                        {feature.icon}
+                      </div>
+                      <CheckCircle className="w-4 h-4 text-[#EE7203] mr-3 group-hover:scale-110 transition-transform duration-300" />
+                      {feature.text}
                     </div>
-                    <CheckCircle className="w-4 h-4 text-[#EE7203] mr-3 group-hover:scale-110 transition-transform duration-300" />
-                    {feature.text}
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-6 p-6 bg-gradient-to-r from-[#112C3E]/60 to-[#0C212D]/60 rounded-2xl border border-white/10 backdrop-blur-sm hover:border-[#EE7203]/30 transition-all duration-300 relative overflow-hidden">
-                <div className="absolute top-2 right-2">
-                  <div className="w-2 h-2 bg-[#EE7203] rounded-full animate-pulse shadow-lg shadow-[#EE7203]/50"></div>
+                  ))}
                 </div>
-                <p className="text-white/90 italic relative z-10 text-center font-medium">
-                  "Join me for dynamic, fun sessions focused on real-life
-                  language use. Perfect for B1+ students ready to excel!"
-                </p>
+
+                {/* Cities Grid */}
+                <div className="grid grid-cols-2 gap-3">
+                  {cities.map((city, index) => (
+                    <div 
+                      key={index}
+                      className="bg-gradient-to-r from-[#112C3E]/60 to-[#0C212D]/60 rounded-xl p-3 border border-white/10 hover:border-[#EE7203]/30 transition-all duration-300 text-center"
+                    >
+                      <div className="text-2xl mb-1">{city.icon}</div>
+                      <div className="text-white/90 font-medium text-sm">{city.name}</div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Call to action */}
+                <div className="mt-6 p-6 bg-gradient-to-r from-[#112C3E]/60 to-[#0C212D]/60 rounded-2xl border border-white/10 backdrop-blur-sm hover:border-[#EE7203]/30 transition-all duration-300 relative overflow-hidden">
+                  <div className="absolute top-2 right-2">
+                    <div className="w-2 h-2 bg-[#EE7203] rounded-full animate-pulse shadow-lg shadow-[#EE7203]/50"></div>
+                  </div>
+                  <p className="text-white/90 italic relative z-10 text-center font-medium">
+                    "Join our in-person classes and develop your conversational skills with confidence and fluency."
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -369,7 +416,7 @@ const ConversationalClubLanding = () => {
             {/* B1+ Level indicator */}
             <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#EE7203]/20 to-[#FF3816]/20 backdrop-blur-lg rounded-full text-white border border-[#EE7203]/30 mb-8">
               <Target className="w-5 h-5 mr-2 text-[#EE7203]" />
-              <span className="font-semibold">Designed for B1 Level & Above</span>
+              <span className="font-semibold">Designed for B1 Level & Above - In Person</span>
             </div>
           </div>
 
@@ -380,17 +427,17 @@ const ConversationalClubLanding = () => {
                 What You'll Experience
               </h3>
               <p className="text-lg text-white/80 leading-relaxed">
-                Our Conversational Club bridges the gap between classroom English and real-world communication. Through guided conversations, interactive activities, and personalized feedback, you'll gain the confidence to speak English naturally in any situation.
+                Our Conversational Club bridges the gap between classroom English and real-world communication. Through guided conversations, interactive activities, and personalized feedback in an in-person setting, you'll gain the confidence to speak English naturally in any situation.
               </p>
             </div>
 
             <div className="bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/10 hover:border-[#EE7203]/30 transition-all duration-300">
               <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-                <Target className="w-6 h-6 text-[#FF3816]" />
-                Perfect for B1+ Students
+                <Building className="w-6 h-6 text-[#FF3816]" />
+                In-Person Classes
               </h3>
               <p className="text-lg text-white/80 leading-relaxed">
-                If you can already handle basic conversations and understand intermediate English, this club will take your speaking skills to an advanced level. Focus on fluency, natural expressions, and confidence-building.
+                Experience the benefits of face-to-face learning in our in-person classes across Argentina. Available in Mar del Plata, Rosario, Córdoba, and Salta with native qualified instructors.
               </p>
             </div>
           </div>
@@ -400,7 +447,7 @@ const ConversationalClubLanding = () => {
             {[
               { icon: <TrendingUp className="w-6 h-6" />, title: "Skill Advancement", desc: "Take your B1+ level to the next stage" },
               { icon: <Users className="w-6 h-6" />, title: "Small Groups", desc: "Maximum 10 students for personalized attention" },
-              { icon: <Globe className="w-6 h-6" />, title: "Real Scenarios", desc: "Practice with authentic conversation topics" },
+              { icon: <MapPin className="w-6 h-6" />, title: "4 Cities Available", desc: "In-person classes in key Argentine cities" },
             ].map((benefit, index) => (
               <div key={index} className="text-center p-6 bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-lg rounded-2xl border border-white/10 hover:border-[#EE7203]/30 transition-all duration-300 hover:scale-105">
                 <div className="text-[#EE7203] mb-4 flex justify-center">
@@ -430,13 +477,13 @@ const ConversationalClubLanding = () => {
                 icon: <MessageCircle className="w-6 h-6" />,
                 question: "What is the Conversational Club?",
                 answer:
-                  "It's a free online workshop designed to help intermediate to advanced students (B1+) practice English in an immersive way with Morgan Robinson, a native speaker from London! You'll have real conversations, discuss current topics, and boost your confidence.",
+                  "It's a free in-person workshop designed to help intermediate to advanced students (B1+) practice English in an immersive way with qualified native speakers. You'll have real conversations, discuss current topics, and boost your confidence in face-to-face classes.",
               },
               {
                 icon: <Target className="w-6 h-6" />,
                 question: "What level do I need to join?",
                 answer:
-                  "You need to be at B1 level or above. This means you can handle basic conversations, understand intermediate English, and are ready to focus on fluency and advanced conversational skills.",
+                  "You need to be at B1 level or above. This means you can handle basic conversations, understand intermediate English, and are ready to focus on fluency and advanced conversational skills in an in-person environment.",
               },
               {
                 icon: <Users className="w-6 h-6" />,
@@ -451,28 +498,28 @@ const ConversationalClubLanding = () => {
                   "It takes off on August 20th. There will be different groups on Wednesday and Friday depending on your level and interests. We will keep you posted no later than Mon 18th when your class has been scheduled.",
               },
               {
-                icon: <Globe className="w-6 h-6" />,
-                question: "What platform will be used?",
+                icon: <MapPin className="w-6 h-6" />,
+                question: "Where are the classes held?",
                 answer:
-                  "We'll meet on Teams. You'll receive the link and schedule details by email before the first session.",
+                  "In-person classes are available in 4 cities: Mar del Plata, Rosario, Córdoba, and Salta. You'll receive the exact location and address details by email after registration.",
               },
               {
                 icon: <Award className="w-6 h-6" />,
                 question: "How many spots are available?",
                 answer:
-                  "Each group has a maximum of 10 participants to ensure quality and personalized interaction perfect for intermediate to advanced learners.",
+                  "Each group has a maximum of 10 participants to ensure quality and personalized interaction—perfect for intermediate to advanced learners in our in-person setting.",
               },
               {
                 icon: <Clock className="w-6 h-6" />,
                 question: "What if I miss a session?",
                 answer:
-                  "You can miss one session only. If you miss more than one, your spot may be given to someone on the waiting list.",
+                  "You can miss one session only. If you miss more than one, your spot may be given to someone on the waiting list. Since classes are in person, attendance is especially important.",
               },
               {
                 icon: <TrendingUp className="w-6 h-6" />,
                 question: "How will this help my B1+ level?",
                 answer:
-                  "You'll practice advanced conversation skills, learn natural expressions, and gain confidence speaking about complex topics - taking you from intermediate to advanced fluency.",
+                  "You'll practice advanced conversation skills, learn natural expressions, and gain confidence speaking about complex topics in an in-person environment—taking you from intermediate to advanced fluency through face-to-face interaction.",
               },
             ].map((faq, index) => (
               <div
@@ -511,14 +558,14 @@ const ConversationalClubLanding = () => {
           {/* Level requirement badge */}
           <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-[#EE7203]/30 to-[#FF3816]/30 backdrop-blur-lg rounded-full text-white/90 text-sm border border-[#EE7203]/50 mb-6">
             <Target className="w-4 h-4 mr-2 text-[#EE7203]" />
-            Perfect for B1+ Level Students
+            Perfect for B1+ Level Students - In-Person Classes
           </div>
 
           <h2 className="text-4xl font-bold text-white mb-6 relative z-10">
             Ready to Take Your English to the Next Level?
           </h2>
           <p className="text-xl text-white/80 mb-8 relative z-10 max-w-2xl mx-auto">
-            Join Morgan's exclusive conversational club and transform your intermediate English into advanced fluency. Register now using our chat bot!
+            Join our exclusive in-person conversational club and transform your intermediate English into advanced fluency. Available in 4 Argentine cities!
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center relative z-10 mb-6">
@@ -541,7 +588,7 @@ const ConversationalClubLanding = () => {
               className="border-2 border-white/30 text-white px-8 py-4 rounded-full font-semibold hover:bg-gradient-to-r hover:from-white/10 hover:to-white/5 hover:border-[#EE7203]/50 transition-all duration-300 flex items-center justify-center gap-2 group backdrop-blur-sm"
             >
               <Play className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
-              Watch Morgan's Intro
+              Watch Course Preview
             </button>
           </div>
 
@@ -552,12 +599,12 @@ const ConversationalClubLanding = () => {
               Completely FREE
             </div>
             <div className="flex items-center justify-center gap-2 text-white/80 bg-white/5 backdrop-blur-sm rounded-full px-4 py-3 border border-white/10 hover:border-[#EE7203]/30 transition-all duration-300">
-              <Target className="w-4 h-4 text-[#FF3816]" />
-              B1+ Level Focus
+              <MapPin className="w-4 h-4 text-[#FF3816]" />
+              4 Cities Available
             </div>
             <div className="flex items-center justify-center gap-2 text-white/80 bg-white/5 backdrop-blur-sm rounded-full px-4 py-3 border border-white/10 hover:border-[#EE7203]/30 transition-all duration-300">
               <span className="w-2 h-2 bg-[#FF3816] rounded-full animate-pulse shadow-lg shadow-[#FF3816]/50"></span>
-              Native Speaker
+              In-Person Classes
             </div>
           </div>
         </div>
