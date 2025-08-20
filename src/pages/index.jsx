@@ -58,8 +58,8 @@ const ConversationalClubLanding = () => {
 
           <div className="aspect-video bg-gradient-to-br from-[#112C3E] to-[#0C212D] rounded-2xl overflow-hidden mx-auto border border-white/10 shadow-inner">
             <iframe
-              src="https://www.youtube.com/embed/dQw4w9WgXca"
-              title="Further Corporate - Conversational Club Presentation"
+              src="https://www.youtube.com/embed/OeMEoSp6drM?autoplay=1&playsinline=1&rel=0&modestbranding=1"
+              title="Further Corporate — Conversational Club Presentation"
               className="w-full h-full rounded-2xl"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
@@ -148,6 +148,9 @@ const ConversationalClubLanding = () => {
         "You'll practice sophisticated conversation skills, master natural expressions and idioms, and gain confidence discussing complex topics. Our In person format provides immediate feedback and real-time interaction that accelerates your journey from intermediate to advanced fluency.",
     },
   ];
+
+  const VIDEO_ID = "OeMEoSp6drM";
+  const THUMB_URL = `https://i.ytimg.com/vi/${VIDEO_ID}/maxresdefault.jpg`;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#112C3E] via-[#0C212D] to-[#112C3E] relative overflow-hidden">
@@ -425,33 +428,38 @@ const ConversationalClubLanding = () => {
           <div className="relative order-1 lg:order-2">
             <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 border border-white/20 shadow-2xl hover:shadow-3xl hover:shadow-[#EE7203]/10 transition-all duration-500 hover:scale-[1.02]">
               <div
-                className="relative w-full aspect-video bg-gradient-to-br from-[#495463] to-[#112C3E] rounded-xl sm:rounded-2xl mb-4 sm:mb-6 overflow-hidden border border-white/10 shadow-inner group cursor-pointer"
-                onClick={() => setShowVideoModal(true)}
-              >
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10"></div>
-                <div className="absolute inset-0 flex items-center justify-center z-20">
-                  <div className="bg-gradient-to-r from-[#EE7203] to-[#FF3816] rounded-full p-4 sm:p-6 shadow-2xl group-hover:scale-110 transition-all duration-300 border-4 border-white/20">
-                    <Play className="w-6 sm:w-8 h-6 sm:h-8 text-white fill-current" />
-                  </div>
-                </div>
-                <div className="w-full h-full bg-gradient-to-br from-[#112C3E] via-[#495463] to-[#0C212D] flex items-center justify-center">
-                  <div className="text-center">
-                    <img
-                      src="/logo-further.png"
-                      alt="Further Corporate Logo"
-                      width={80}
-                      height={80}
-                      className="mx-auto mb-4 opacity-60 object-contain"
-                    />
-                    <p className="text-white/60 font-medium text-sm sm:text-base">
-                      Course Overview
-                    </p>
-                  </div>
-                </div>
-                <div className="absolute top-2 sm:top-4 right-2 sm:right-4 bg-gradient-to-r from-[#EE7203] to-[#FF3816] text-white px-2 sm:px-3 py-1 rounded-full text-xs font-bold shadow-lg border border-white/20 z-30">
-                  In-Person
-                </div>
-              </div>
+      className="relative w-full aspect-video bg-gradient-to-br from-[#495463] to-[#112C3E] rounded-xl sm:rounded-2xl mb-4 sm:mb-6 overflow-hidden border border-white/10 shadow-inner group cursor-pointer"
+      onClick={() => setShowVideoModal(true)}
+      role="button"
+      aria-label="Open video preview"
+      tabIndex={0}
+      onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && setShowVideoModal(true)}
+    >
+      {/* Miniatura del video */}
+      <Image
+        src={THUMB_URL}
+        alt="Preview — Conversational Club Presentation"
+        fill
+        className="object-cover"
+        sizes="(min-width: 1024px) 640px, 100vw"
+        priority
+      />
+
+      {/* Overlay oscurecido */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10" />
+
+      {/* Botón de Play centrado */}
+      <div className="absolute inset-0 flex items-center justify-center z-20">
+        <div className="bg-gradient-to-r from-[#EE7203] to-[#FF3816] rounded-full p-4 sm:p-6 shadow-2xl group-hover:scale-110 transition-all duration-300 border-4 border-white/20">
+          <Play className="w-6 sm:w-8 h-6 sm:h-8 text-white fill-current" />
+        </div>
+      </div>
+
+      {/* Etiqueta superior derecha */}
+      <div className="absolute top-2 sm:top-4 right-2 sm:right-4 bg-gradient-to-r from-[#EE7203] to-[#FF3816] text-white px-2 sm:px-3 py-1 rounded-full text-xs font-bold shadow-lg border border-white/20 z-30">
+        In-Person
+      </div>
+    </div>
 
               <div className="space-y-4 sm:space-y-6">
                 <div className="text-center">
@@ -575,8 +583,8 @@ const ConversationalClubLanding = () => {
                 <span>Premium In-Person Experience</span>
               </h3>
               <p className="text-base sm:text-lg text-white/80 leading-relaxed">
-                Experience the unmatched benefits of In person learning in
-                our thoughtfully designed spaces across Argentina. Our in-person
+                Experience the unmatched benefits of In person learning in our
+                thoughtfully designed spaces across Argentina. Our in-person
                 classes in Mar del Plata, Rosario, Córdoba, and Salta feature
                 expert instructors and intimate learning environments that
                 foster genuine connection and accelerated language development.
