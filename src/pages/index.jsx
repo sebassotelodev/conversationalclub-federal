@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   MessageCircle,
   Users,
@@ -32,6 +32,9 @@ const ConversationalClubLanding = () => {
   const [expandedFaq, setExpandedFaq] = useState(null);
   const [verChat, setVerChat] = useState(false);
 
+  // NUEVO: overlay guía para “hacer click en el bot”
+  const [showGuide, setShowGuide] = useState(false);
+
   const aboutRef = useRef(null);
   const faqRef = useRef(null);
   const homeRef = useRef(null);
@@ -39,15 +42,48 @@ const ConversationalClubLanding = () => {
 
   const scrollToSection = (ref) =>
     ref.current?.scrollIntoView({ behavior: "smooth" });
-  const handleRegisterClick = () => setVerChat(!verChat);
+
+  // NO se cambia el funcionamiento existente: sigue toggling del chat
+  const handleRegisterClick = () => {
+    setVerChat(!verChat);
+    // Muestra la capa guía para indicarle que use el bot
+    setShowGuide(true);
+  };
+
   const handleChatToggle = () => setVerChat(!verChat);
   const handleLogoClick = () => setVerChat((prev) => !prev);
 
+  // NUEVO: cerrar con Escape tanto el modal como la guía
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setShowVideoModal(false);
+        setShowGuide(false);
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
+
   const VideoModal = () => {
     if (!showVideoModal) return null;
+
+    // Cerrar si se hace click en el fondo (fuera del modal)
+    const handleBackdropClick = () => setShowVideoModal(false);
+    const stop = (e) => e.stopPropagation();
+
     return (
-      <div className="fixed inset-0 bg-black/90 backdrop-blur-lg z-50 flex items-center justify-center p-4 animate-fadeIn">
-        <div className="relative rounded-3xl p-4 md:p-6 max-w-xs sm:max-w-md lg:max-w-4xl w-full border border-[#EE7203]/30 bg-gradient-to-br from-[#112C3E]/95 to-[#0C212D]/95 backdrop-blur-xl shadow-2xl animate-scaleIn">
+      <div
+        className="fixed inset-0 bg-black/90 backdrop-blur-lg z-50 flex items-center justify-center p-4 animate-fadeIn"
+        onClick={handleBackdropClick}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Video modal"
+      >
+        <div
+          className="relative rounded-3xl p-4 md:p-6 max-w-xs sm:max-w-md lg:max-w-4xl w-full border border-[#EE7203]/30 bg-gradient-to-br from-[#112C3E]/95 to-[#0C212D]/95 backdrop-blur-xl shadow-2xl animate-scaleIn"
+          onClick={stop}
+        >
           <button
             onClick={() => setShowVideoModal(false)}
             className="absolute -top-4 -right-4 bg-gradient-to-r from-[#FF3816] to-[#EE7203] text-white rounded-full p-3 hover:shadow-xl hover:scale-110 transition-all duration-300 z-10 border-2 border-white/20"
@@ -70,6 +106,80 @@ const ConversationalClubLanding = () => {
     );
   };
 
+  // NUEVO: overlay guía con blur + texto + flecha hacia abajo a la derecha
+const GuideOverlay = () => {
+  if (!showGuide) return null;
+
+  const handleClose = () => setShowGuide(false);
+  const stop = (e) => e.stopPropagation();
+
+  // 🔒 Lock scroll while overlay is open
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
+
+  return (
+    <div
+      className="fixed inset-0 z-[60] bg-black/70 backdrop-blur-sm animate-fadeIn"
+      onClick={handleClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Guide overlay"
+    >
+      {/* Central message box (click inside does not close) */}
+      <div
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 max-w-md w-[90%] sm:w-[480px] bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-2xl p-6 text-white shadow-2xl"
+        onClick={stop}
+      >
+        <div className="flex items-start gap-3">
+          <div className="bg-gradient-to-r from-[#EE7203] to-[#FF3816] rounded-xl p-2 shrink-0">
+            <MessageCircle className="w-5 h-5 text-white" />
+          </div>
+          <div>
+            <h3 className="text-xl font-bold mb-1">One more step! ✨</h3>
+            <p className="text-white/90">
+              Please{" "}
+              <span className="font-semibold text-[#EE7203]">click</span> on the{" "}
+              <span className="font-semibold">bot</span> at the bottom right to
+              start your registration.
+            </p>
+          </div>
+        </div>
+
+        <button
+          onClick={handleClose}
+          className="mt-4 w-full bg-gradient-to-r from-[#EE7203] to-[#FF3816] text-white font-semibold rounded-full py-2.5 hover:shadow-2xl hover:shadow-[#EE7203]/30 transition-all duration-300"
+        >
+          OK, go to the bot
+        </button>
+
+        <p className="text-center text-xs text-white/60 mt-2">
+          (You can also press <span className="font-semibold">Esc</span> or
+          click outside to close)
+        </p>
+      </div>
+
+      {/* Arrow and label pointing to bottom right */}
+      <div className="pointer-events-none absolute bottom-24 right-24 hidden sm:block">
+        {/* Floating label */}
+        <div className="mb-2 px-3 py-1 rounded-full text-sm font-semibold bg-white/10 border border-white/20 backdrop-blur-sm inline-block">
+          Here is the bot 👇
+        </div>
+        {/* Animated diagonal arrow */}
+        <div className="w-40 h-40 relative">
+          <div className="absolute inset-0 rotate-45 animate-slowBounce flex items-center">
+            <ArrowRight className="w-40 h-40 text-white/80" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+
   // Cities with improved descriptions
   const cities = [
     {
@@ -81,13 +191,13 @@ const ConversationalClubLanding = () => {
     {
       name: "Rosario",
       room: "Pichincha Room",
-      icon: "🌆",
+      icon: "🏙️",
       description: "Urban conversation practice",
     },
     {
       name: "Córdoba",
       room: "Córdoba Room",
-      icon: "🏛️",
+      icon: "🎡",
       description: "Historic city setting",
     },
     {
@@ -107,16 +217,11 @@ const ConversationalClubLanding = () => {
     },
     {
       icon: <Target className="w-5 h-5" />,
-      question: "What English level do I need?",
+      question: "How can I join?",
       answer:
         "You need a B1 (intermediate) level or higher. This means you can handle everyday conversations, understand intermediate English content, and you're ready to focus on developing fluency and natural communication skills rather than basic grammar.",
     },
-    {
-      icon: <Users className="w-5 h-5" />,
-      question: "Who is eligible to join?",
-      answer:
-        "The program is exclusively available to current Further Corporate students and professionals invited through their companies. A confirmed B1+ English level is required to participate effectively in our conversation-focused sessions.",
-    },
+
     {
       icon: <Calendar className="w-5 h-5" />,
       question: "When do classes begin and what's the schedule?",
@@ -127,7 +232,7 @@ const ConversationalClubLanding = () => {
       icon: <MapPin className="w-5 h-5" />,
       question: "Where are the in-person classes held?",
       answer:
-        "We offer classes in four major Argentine cities: Rosario (Pichincha Room), Córdoba (Córdoba Room), Salta (Cafayate Room), and Mar del Plata (Bristol Room). Each location provides a comfortable, modern learning environment.",
+        "We offer classes in four major Argentine cities: Rosario (Pichincha Room), Córdoba (Córdoba Room), Salta (Cafayate Room), and Mar del Plata (Bristol Room), all within the corresponding Accenture headquarters. Each location provides a comfortable, modern learning environment.",
     },
     {
       icon: <Award className="w-5 h-5" />,
@@ -139,7 +244,7 @@ const ConversationalClubLanding = () => {
       icon: <Clock className="w-5 h-5" />,
       question: "What's the attendance policy?",
       answer:
-        "You're allowed to miss one session during the course. However, missing more than one session may result in your spot being offered to someone from the waiting list. Regular attendance is essential for in-person learning success.",
+        "You're allowed to miss one session during the course. This means that, missing more than one session may result in your spot being offered to someone from the waiting list. Regular attendance is essential for in-person learning success.",
     },
     {
       icon: <TrendingUp className="w-5 h-5" />,
@@ -187,7 +292,7 @@ const ConversationalClubLanding = () => {
           </div>
         </button>
 
-        <div className="hidden lg:flex space-x-8 text-white/90 bg-white/5 backdrop-blur-sm rounded-2xl px-8 py-4 border border-white/10">
+        <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-white/90 bg-white/5 backdrop-blur-sm rounded-2xl px-4 sm:px-8 py-3 sm:py-4 border border-white/10">
           {[
             { label: "Home", ref: homeRef },
             { label: "About", ref: aboutRef },
@@ -428,38 +533,41 @@ const ConversationalClubLanding = () => {
           <div className="relative order-1 lg:order-2">
             <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 border border-white/20 shadow-2xl hover:shadow-3xl hover:shadow-[#EE7203]/10 transition-all duration-500 hover:scale-[1.02]">
               <div
-      className="relative w-full aspect-video bg-gradient-to-br from-[#495463] to-[#112C3E] rounded-xl sm:rounded-2xl mb-4 sm:mb-6 overflow-hidden border border-white/10 shadow-inner group cursor-pointer"
-      onClick={() => setShowVideoModal(true)}
-      role="button"
-      aria-label="Open video preview"
-      tabIndex={0}
-      onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && setShowVideoModal(true)}
-    >
-      {/* Miniatura del video */}
-      <Image
-        src={THUMB_URL}
-        alt="Preview — Conversational Club Presentation"
-        fill
-        className="object-cover"
-        sizes="(min-width: 1024px) 640px, 100vw"
-        priority
-      />
+                className="relative w-full aspect-video bg-gradient-to-br from-[#495463] to-[#112C3E] rounded-xl sm:rounded-2xl mb-4 sm:mb-6 overflow-hidden border border-white/10 shadow-inner group cursor-pointer"
+                onClick={() => setShowVideoModal(true)}
+                role="button"
+                aria-label="Open video preview"
+                tabIndex={0}
+                onKeyDown={(e) =>
+                  (e.key === "Enter" || e.key === " ") &&
+                  setShowVideoModal(true)
+                }
+              >
+                {/* Miniatura del video */}
+                <Image
+                  src={THUMB_URL}
+                  alt="Preview — Conversational Club Presentation"
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 640px, 100vw"
+                  priority
+                />
 
-      {/* Overlay oscurecido */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10" />
+                {/* Overlay oscurecido */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10" />
 
-      {/* Botón de Play centrado */}
-      <div className="absolute inset-0 flex items-center justify-center z-20">
-        <div className="bg-gradient-to-r from-[#EE7203] to-[#FF3816] rounded-full p-4 sm:p-6 shadow-2xl group-hover:scale-110 transition-all duration-300 border-4 border-white/20">
-          <Play className="w-6 sm:w-8 h-6 sm:h-8 text-white fill-current" />
-        </div>
-      </div>
+                {/* Botón de Play centrado */}
+                <div className="absolute inset-0 flex items-center justify-center z-20">
+                  <div className="bg-gradient-to-r from-[#EE7203] to-[#FF3816] rounded-full p-4 sm:p-6 shadow-2xl group-hover:scale-110 transition-all duration-300 border-4 border-white/20">
+                    <Play className="w-6 sm:w-8 h-6 sm:h-8 text-white fill-current" />
+                  </div>
+                </div>
 
-      {/* Etiqueta superior derecha */}
-      <div className="absolute top-2 sm:top-4 right-2 sm:right-4 bg-gradient-to-r from-[#EE7203] to-[#FF3816] text-white px-2 sm:px-3 py-1 rounded-full text-xs font-bold shadow-lg border border-white/20 z-30">
-        In-Person
-      </div>
-    </div>
+                {/* Etiqueta superior derecha */}
+                <div className="absolute top-2 sm:top-4 right-2 sm:right-4 bg-gradient-to-r from-[#EE7203] to-[#FF3816] text-white px-2 sm:px-3 py-1 rounded-full text-xs font-bold shadow-lg border border-white/20 z-30">
+                  In-Person
+                </div>
+              </div>
 
               <div className="space-y-4 sm:space-y-6">
                 <div className="text-center">
@@ -543,7 +651,7 @@ const ConversationalClubLanding = () => {
       {/* Enhanced About Section */}
       <div
         ref={aboutRef}
-        className="relative z-10 bg-gradient-to-r from-white/5 via-white/10 to-white/5 backdrop-blur-sm border-t border-white/10"
+        className="relative z-10 bg-gradient-to-r from:white/5 via-white/10 to-white/5 backdrop-blur-sm border-t border-white/10"
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-20">
           <div className="text-center mb-12 sm:mb-16">
@@ -623,7 +731,7 @@ const ConversationalClubLanding = () => {
               {
                 icon: <Heart className="w-5 sm:w-6 h-5 sm:h-6" />,
                 title: "Community Connection",
-                desc: "Build lasting friendships while improving your English in a welcoming environment",
+                desc: "Network with like-minded peers in a welcoming environment",
               },
             ].map((benefit, index) => (
               <div
@@ -826,7 +934,7 @@ const ConversationalClubLanding = () => {
       </footer>
 
       {/* Mobile Navigation */}
-      <div className="fixed bottom-4 left-4 right-4 lg:hidden z-40">
+      {/* <div className="fixed bottom-4 left-4 right-4 lg:hidden z-40">
         <div className="bg-gradient-to-r from-[#112C3E]/95 to-[#0C212D]/95 backdrop-blur-xl rounded-2xl p-4 border border-white/20 shadow-2xl">
           <div className="flex justify-around items-center">
             {[
@@ -857,7 +965,7 @@ const ConversationalClubLanding = () => {
                 className={`flex flex-col items-center gap-1 p-2 rounded-xl transition-all duration-300 cursor-pointer ${
                   item.label === "Register in Bot"
                     ? "bg-gradient-to-r from-[#EE7203] to-[#FF3816] text-white"
-                    : "text-white/70 hover:text-white hover:bg-white/10"
+                    : "text-white/70 hover:text-white hover:bg:white/10"
                 }`}
               >
                 {item.icon}
@@ -866,10 +974,15 @@ const ConversationalClubLanding = () => {
             ))}
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Components */}
       <Chat isVisible={verChat} onToggle={handleChatToggle} />
+
+      {/* NUEVO: Overlay guía */}
+      <GuideOverlay />
+
+      {/* Modal de video */}
       <VideoModal />
 
       <style jsx>{`
@@ -959,13 +1072,10 @@ const ConversationalClubLanding = () => {
           animation: gradient 3s ease infinite;
         }
         .animate-fadeIn {
-          animation: fadeIn 0.3s ease-out;
+          animation: fadeIn 0.25s ease-out;
         }
         .animate-scaleIn {
-          animation: scaleIn 0.3s ease-out;
-        }
-        .bg-300% {
-          background-size: 300% 300%;
+          animation: scaleIn 0.25s ease-out;
         }
       `}</style>
     </div>

@@ -67,7 +67,7 @@ export const Chat = ({ isVisible, onToggle }) => {
           --chat--color-dark: var(--chat--primary-dark);
           --chat--color-white: var(--chat--pure-white);
           --chat--color-gray: var(--chat--neutral-gray);
-          --chat--color-light: rgba(255, 255, 255, 0.1);
+          --chat--color-light: rgba(255, 255, 255, 0.8);
           --chat--color-medium: rgba(255, 255, 255, 0.2);
           --chat--color-border: rgba(255, 255, 255, 0.15);
 
