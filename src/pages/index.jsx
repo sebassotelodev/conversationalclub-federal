@@ -213,7 +213,7 @@ const GuideOverlay = () => {
       icon: <MessageCircle className="w-5 h-5" />,
       question: "What is the Conversational Club?",
       answer:
-        "Our Conversational Club is a complimentary in-person workshop exclusively designed for intermediate to advanced English learners (B1+ level). Led by qualified instructors, you'll engage in meaningful conversations, explore current topics, and build genuine confidence through In person interactions in a supportive environment.",
+        "Our Conversational Club is a complementary in-person workshop exclusively designed for intermediate to advanced English learners (B1+ level). Led by qualified instructors, you'll engage in meaningful conversations, explore current topics, and build genuine confidence through In person interactions in a supportive environment.",
     },
     {
       icon: <Target className="w-5 h-5" />,
@@ -351,7 +351,7 @@ const GuideOverlay = () => {
               <div className="relative">
                 <p className="text-xl sm:text-2xl lg:text-3xl font-semibold text-white leading-relaxed drop-shadow-sm">
                   <span className="bg-gradient-to-r from-[#EE7203] to-[#FF3816] bg-clip-text text-transparent">
-                    Exclusive Complimentary
+                    Exclusive Complementary
                   </span>{" "}
                   <span className="text-white">Conversational Course</span>
                 </p>
@@ -376,7 +376,7 @@ const GuideOverlay = () => {
               <p className="text-lg sm:text-xl text-white/85 leading-relaxed">
                 Our{" "}
                 <span className="font-semibold text-[#EE7203]">
-                  complimentary In person course
+                  complementary In person course
                 </span>{" "}
                 is{" "}
                 <span className="font-semibold text-white">
@@ -838,7 +838,7 @@ const GuideOverlay = () => {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 text-center">
               <div className="flex items-center justify-center gap-2 text-white/80 bg-white/5 backdrop-blur-sm rounded-full px-3 sm:px-4 py-2 sm:py-3 border border-white/10 hover:border-[#EE7203]/30 transition-all duration-300 text-sm sm:text-base">
                 <span className="w-2 h-2 bg-[#EE7203] rounded-full animate-pulse shadow-lg shadow-[#EE7203]/50 flex-shrink-0"></span>
-                <span>Completely Complimentary</span>
+                <span>Completely Complementary</span>
               </div>
               <div className="flex items-center justify-center gap-2 text-white/80 bg-white/5 backdrop-blur-sm rounded-full px-3 sm:px-4 py-2 sm:py-3 border border-white/10 hover:border-[#EE7203]/30 transition-all duration-300 text-sm sm:text-base">
                 <MapPin className="w-4 h-4 text-[#FF3816] flex-shrink-0" />
