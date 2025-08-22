@@ -107,78 +107,77 @@ const ConversationalClubLanding = () => {
   };
 
   // NUEVO: overlay guía con blur + texto + flecha hacia abajo a la derecha
-const GuideOverlay = () => {
-  if (!showGuide) return null;
+  const GuideOverlay = () => {
+    if (!showGuide) return null;
 
-  const handleClose = () => setShowGuide(false);
-  const stop = (e) => e.stopPropagation();
+    const handleClose = () => setShowGuide(false);
+    const stop = (e) => e.stopPropagation();
 
-  // 🔒 Lock scroll while overlay is open
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, []);
+    // 🔒 Lock scroll while overlay is open
+    useEffect(() => {
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = "auto";
+      };
+    }, []);
 
-  return (
-    <div
-      className="fixed inset-0 z-[60] bg-black/70 backdrop-blur-sm animate-fadeIn"
-      onClick={handleClose}
-      role="dialog"
-      aria-modal="true"
-      aria-label="Guide overlay"
-    >
-      {/* Central message box (click inside does not close) */}
+    return (
       <div
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 max-w-md w-[90%] sm:w-[480px] bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-2xl p-6 text-white shadow-2xl"
-        onClick={stop}
+        className="fixed inset-0 z-[60] bg-black/70 backdrop-blur-sm animate-fadeIn"
+        onClick={handleClose}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Guide overlay"
       >
-        <div className="flex items-start gap-3">
-          <div className="bg-gradient-to-r from-[#EE7203] to-[#FF3816] rounded-xl p-2 shrink-0">
-            <MessageCircle className="w-5 h-5 text-white" />
-          </div>
-          <div>
-            <h3 className="text-xl font-bold mb-1">One more step! ✨</h3>
-            <p className="text-white/90">
-              Please{" "}
-              <span className="font-semibold text-[#EE7203]">click</span> on the{" "}
-              <span className="font-semibold">bot</span> at the bottom right to
-              start your registration.
-            </p>
-          </div>
-        </div>
-
-        <button
-          onClick={handleClose}
-          className="mt-4 w-full bg-gradient-to-r from-[#EE7203] to-[#FF3816] text-white font-semibold rounded-full py-2.5 hover:shadow-2xl hover:shadow-[#EE7203]/30 transition-all duration-300"
+        {/* Central message box (click inside does not close) */}
+        <div
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 max-w-md w-[90%] sm:w-[480px] bg-gradient-to-br from-white/10 to-white/5 border border-white/20 rounded-2xl p-6 text-white shadow-2xl"
+          onClick={stop}
         >
-          OK, go to the bot
-        </button>
+          <div className="flex items-start gap-3">
+            <div className="bg-gradient-to-r from-[#EE7203] to-[#FF3816] rounded-xl p-2 shrink-0">
+              <MessageCircle className="w-5 h-5 text-white" />
+            </div>
+            <div>
+              <h3 className="text-xl font-bold mb-1">One more step! ✨</h3>
+              <p className="text-white/90">
+                Please{" "}
+                <span className="font-semibold text-[#EE7203]">click</span> on
+                the <span className="font-semibold">bot</span> at the bottom
+                right to start your registration.
+              </p>
+            </div>
+          </div>
 
-        <p className="text-center text-xs text-white/60 mt-2">
-          (You can also press <span className="font-semibold">Esc</span> or
-          click outside to close)
-        </p>
-      </div>
+          <button
+            onClick={handleClose}
+            className="mt-4 w-full bg-gradient-to-r from-[#EE7203] to-[#FF3816] text-white font-semibold rounded-full py-2.5 hover:shadow-2xl hover:shadow-[#EE7203]/30 transition-all duration-300"
+          >
+            OK, go to the bot
+          </button>
 
-      {/* Arrow and label pointing to bottom right */}
-      <div className="pointer-events-none absolute bottom-24 right-24 hidden sm:block">
-        {/* Floating label */}
-        <div className="mb-2 px-3 py-1 rounded-full text-sm font-semibold bg-white/10 border border-white/20 backdrop-blur-sm inline-block">
-          Here is the bot 👇
+          <p className="text-center text-xs text-white/60 mt-2">
+            (You can also press <span className="font-semibold">Esc</span> or
+            click outside to close)
+          </p>
         </div>
-        {/* Animated diagonal arrow */}
-        <div className="w-40 h-40 relative">
-          <div className="absolute inset-0 rotate-45 animate-slowBounce flex items-center">
-            <ArrowRight className="w-40 h-40 text-white/80" />
+
+        {/* Arrow and label pointing to bottom right */}
+        <div className="pointer-events-none absolute bottom-24 right-24 hidden sm:block">
+          {/* Floating label */}
+          <div className="mb-2 px-3 py-1 rounded-full text-sm font-semibold bg-white/10 border border-white/20 backdrop-blur-sm inline-block">
+            Here is the bot 👇
+          </div>
+          {/* Animated diagonal arrow */}
+          <div className="w-40 h-40 relative">
+            <div className="absolute inset-0 rotate-45 animate-slowBounce flex items-center">
+              <ArrowRight className="w-40 h-40 text-white/80" />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
-};
-
+    );
+  };
 
   // Cities with improved descriptions
   const cities = [
@@ -238,7 +237,7 @@ const GuideOverlay = () => {
       icon: <Award className="w-5 h-5" />,
       question: "How many spots are available?",
       answer:
-        "Each group is limited to a maximum of 16 participants to ensure personalized attention and quality interaction. If a group fills up, additional registrants will be placed on our priority waiting list.",
+        "Each group is limited to 8 participants (16 in total), to ensure personalized attention and quality interaction. If a group fills up, additional registrants will be placed on our priority waiting list.",
     },
     {
       icon: <Clock className="w-5 h-5" />,
@@ -459,73 +458,85 @@ const GuideOverlay = () => {
             </div>
 
             {/* Enhanced Stats */}
-            <div className="grid grid-cols-3 gap-3 sm:gap-6 pt-6 sm:pt-8">
-              {[
-                // 1) Exclusive card -> only logo
-                { exclusive: true },
-                // 2) Sessions
-                {
-                  value: "12",
-                  label: "Sessions",
-                  icon: <Calendar className="w-4 sm:w-6 h-4 sm:h-6" />,
-                  exclusive: false,
-                },
-                // 3) Max per group
-                {
-                  value: "16",
-                  label: "Max per Group",
-                  icon: <Users className="w-4 sm:w-6 h-4 sm:h-6" />,
-                  exclusive: false,
-                },
-              ].map((stat, index) => (
-                <div key={index} className="text-center group cursor-default">
-                  <div className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-xl sm:rounded-2xl p-3 sm:p-6 border border-white/10 hover:border-[#EE7203]/30 transition-all duration-300 hover:scale-105 overflow-hidden  sm:h-48 lg:h-56 h-40">
-                    {/* Exclusive ribbon (kept) */}
-                    {stat.exclusive && (
-                      <>
-                        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#EE7203] via-[#FF3816] to-[#EE7203] animate-gradient bg-300%" />
-                        <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 z-10">
-                          <div className="bg-gradient-to-r from-[#EE7203] to-[#FF3816] text-white text-xs font-bold px-2 sm:px-4 py-1 sm:py-1.5 rounded-full uppercase tracking-wider shadow-xl border border-white/20 relative overflow-hidden group-hover:scale-110 transition-all duration-300">
-                            <span className="relative z-10 flex items-center gap-1">
-                              <Sparkles className="w-2 sm:w-3 h-2 sm:h-3 animate-pulse" />
-                              <span>Exclusive</span>
-                              <Sparkles className="w-2 sm:w-3 h-2 sm:h-3 animate-pulse" />
-                            </span>
+            <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="grid grid-cols-2 gap-4 sm:gap-6 pt-6 sm:pt-8 justify-items-center">
+                {[
+                  // 0) Exclusive card -> only logo
+                  { exclusive: true },
+                  // 1) Sessions
+                  {
+                    value: "12",
+                    label: "Sessions",
+                    icon: <Calendar className="w-4 sm:w-6 h-4 sm:h-6" />,
+                    exclusive: false,
+                  },
+                  // 2) Max per group
+                  {
+                    value: "8",
+                    label: "Max per Group",
+                    icon: <Users className="w-4 sm:w-6 h-4 sm:h-6" />,
+                    exclusive: false,
+                  },
+                  // 3) Time Slots
+                  {
+                    value: "2",
+                    label: "Time Slots",
+                    icon: <Clock className="w-4 sm:w-6 h-4 sm:h-6" />,
+                    exclusive: false,
+                  },
+                ].map((stat, index) => (
+                  <div
+                    key={index}
+                    className="w-full max-w-[280px] text-center group cursor-default"
+                  >
+                    <div className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-xl sm:rounded-2xl p-3 sm:p-5 border border-white/10 hover:border-[#EE7203]/30 transition-all duration-300 hover:scale-105 overflow-hidden h-40 sm:h-44 lg:h-48 flex flex-col justify-center">
+                      {/* Exclusive ribbon (kept) */}
+                      {stat.exclusive && (
+                        <>
+                          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#EE7203] via-[#FF3816] to-[#EE7203] animate-gradient bg-300%" />
+                          <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 z-10">
+                            <div className="bg-gradient-to-r from-[#EE7203] to-[#FF3816] text-white text-xs font-bold px-3 sm:px-4 py-1 sm:py-1.5 rounded-full uppercase tracking-wider shadow-xl border border-white/20 relative overflow-hidden group-hover:scale-110 transition-all duration-300">
+                              <span className="relative z-10 flex items-center gap-1">
+                                <Sparkles className="w-3 sm:w-3 h-3 sm:h-3 animate-pulse" />
+                                <span className="text-xs">Exclusive</span>
+                                <Sparkles className="w-3 sm:w-3 h-3 sm:h-3 animate-pulse" />
+                              </span>
+                            </div>
+                          </div>
+                        </>
+                      )}
+
+                      {/* Card body */}
+                      {stat.exclusive ? (
+                        // Logo only (no "FREE" / no "Course")
+                        <div className="flex items-center justify-center flex-1">
+                          <Image
+                            src="/Further-Federal.png"
+                            alt="Further Federal logo"
+                            width={160}
+                            height={160}
+                            priority
+                            className="w-28 sm:w-32 lg:w-36 h-auto object-contain drop-shadow-md mx-auto"
+                          />
+                          <span className="sr-only">Further Federal</span>
+                        </div>
+                      ) : (
+                        <div className="flex flex-col items-center justify-center flex-1 space-y-2 sm:space-y-3">
+                          <div className="text-[#EE7203] flex justify-center group-hover:scale-110 transition-transform duration-300">
+                            {stat.icon}
+                          </div>
+                          <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white group-hover:text-[#EE7203] transition-colors duration-300">
+                            {stat.value}
+                          </div>
+                          <div className="text-white/70 font-medium text-sm sm:text-base text-center leading-tight">
+                            {stat.label}
                           </div>
                         </div>
-                      </>
-                    )}
-
-                    {/* Card body */}
-                    {stat.exclusive ? (
-                      // Logo only (no "FREE" / no "Course")
-                      <div className="flex items-center justify-center py-6 sm:py-8 min-h-[96px] sm:min-h-[120px]">
-                        <Image
-                          src="/Further-Federal.png"
-                          alt="Further Federal logo"
-                          width={160}
-                          height={160}
-                          priority
-                          className="w-20 sm:w-28 h-auto object-contain drop-shadow-md"
-                        />
-                        <span className="sr-only">Further Federal</span>
-                      </div>
-                    ) : (
-                      <>
-                        <div className="text-[#EE7203] mb-2 sm:mb-3 flex justify-center group-hover:scale-110 transition-transform duration-300 mt-2">
-                          {stat.icon}
-                        </div>
-                        <div className="text-xl sm:text-3xl font-bold text-white group-hover:text-[#EE7203] transition-colors duration-300 mb-1 sm:mb-2">
-                          {stat.value}
-                        </div>
-                        <div className="text-white/70 font-medium text-xs sm:text-base">
-                          {stat.label}
-                        </div>
-                      </>
-                    )}
+                      )}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
 
