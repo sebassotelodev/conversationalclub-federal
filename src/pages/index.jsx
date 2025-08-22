@@ -237,7 +237,7 @@ const ConversationalClubLanding = () => {
       icon: <Award className="w-5 h-5" />,
       question: "How many spots are available?",
       answer:
-        "Each group is limited to 8 participants (16 in total), to ensure personalized attention and quality interaction. If a group fills up, additional registrants will be placed on our priority waiting list.",
+        "Each group is limited to 8 participants, to ensure personalized attention and quality interaction. If a group fills up, additional registrants will be placed on our priority waiting list.",
     },
     {
       icon: <Clock className="w-5 h-5" />,
