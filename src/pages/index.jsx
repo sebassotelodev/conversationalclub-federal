@@ -94,7 +94,7 @@ const ConversationalClubLanding = () => {
 
           <div className="aspect-video bg-gradient-to-br from-[#112C3E] to-[#0C212D] rounded-2xl overflow-hidden mx-auto border border-white/10 shadow-inner">
             <iframe
-              src="https://www.youtube.com/embed/OeMEoSp6drM?autoplay=1&playsinline=1&rel=0&modestbranding=1"
+              src="https://www.youtube.com/embed/fgXfOrbJPsE?autoplay=1&playsinline=1&rel=0&modestbranding=1"
               title="Further Corporate — Conversational Club Presentation"
               className="w-full h-full rounded-2xl"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
