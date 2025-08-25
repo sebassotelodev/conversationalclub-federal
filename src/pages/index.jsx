@@ -212,13 +212,13 @@ const ConversationalClubLanding = () => {
       icon: <MessageCircle className="w-5 h-5" />,
       question: "What is the Conversational Club?",
       answer:
-        "Our Conversational Club is a complementary in-person workshop exclusively designed for intermediate to advanced English learners (B1 & B2 level). Led by qualified instructors, you'll engage in meaningful conversations, explore current topics, and build genuine confidence through In person interactions in a supportive environment.",
+        "Our Conversational Club is a complementary in-person workshop exclusively designed for intermediate to advanced English learners (B1 & B2 Ahead level). Led by qualified instructors, you'll engage in meaningful conversations, explore current topics, and build genuine confidence through In person interactions in a supportive environment.",
     },
     {
       icon: <Target className="w-5 h-5" />,
       question: "How can I join?",
       answer:
-        "You need a B1 & B2 level. This means you can handle everyday conversations, understand intermediate English content, and you're ready to focus on developing fluency and natural communication skills rather than basic grammar.",
+        "You need a B1 & B2 Ahead level. This means you can handle everyday conversations, understand intermediate English content, and you're ready to focus on developing fluency and natural communication skills rather than basic grammar.",
     },
 
     {
@@ -247,7 +247,7 @@ const ConversationalClubLanding = () => {
     },
     {
       icon: <TrendingUp className="w-5 h-5" />,
-      question: "How will this advance my B1 & B2 level?",
+      question: "How will this advance my B1 & B2 Ahead level?",
       answer:
         "You'll practice sophisticated conversation skills, master natural expressions and idioms, and gain confidence discussing complex topics. Our In person format provides immediate feedback and real-time interaction that accelerates your journey from intermediate to advanced fluency.",
     },
@@ -331,7 +331,7 @@ const ConversationalClubLanding = () => {
               <Sparkles className="w-3 h-3 animate-pulse flex-shrink-0" />
               <span className="font-medium">MASTER ENGLISH CONVERSATIONS</span>
               <span className="px-2 py-1 bg-gradient-to-r from-[#EE7203] to-[#FF3816] rounded-full text-xs font-bold flex-shrink-0">
-                B1 & B2
+                B1 & B2 Ahead
               </span>
               <span className="px-2 py-1 bg-gradient-to-r from-[#495463] to-[#112C3E] rounded-full text-xs font-bold flex-shrink-0">
                 IN PERSON
@@ -355,7 +355,8 @@ const ConversationalClubLanding = () => {
                   <span className="text-white">Conversational Course</span>
                 </p>
                 <p className="text-base sm:text-lg text-white/70 mt-2 font-medium">
-                  Designed for Intermediate to Advanced Learners (B1 & B2 Level)
+                  Designed for Intermediate to Advanced Learners (B1 & B2 Ahead
+                  Level)
                 </p>
                 <p className="text-base sm:text-lg text-white/70 mt-1 font-medium flex items-center gap-2 flex-wrap">
                   <MapPin className="w-4 h-4 text-[#EE7203] flex-shrink-0" />
@@ -413,14 +414,14 @@ const ConversationalClubLanding = () => {
                 </div>
               </div>
 
-              {/* Enhanced B1 & B2 highlight */}
+              {/* Enhanced B1 & B2 Ahead highlight */}
               <div className="bg-gradient-to-r from-[#EE7203]/10 to-[#FF3816]/10 border border-[#EE7203]/30 rounded-2xl p-4 sm:p-6 backdrop-blur-sm">
                 <div className="flex items-start gap-3">
                   <Target className="w-5 h-5 text-[#EE7203] flex-shrink-0 mt-1" />
                   <div>
                     <p className="text-white/90 font-medium mb-2">
                       <span className="text-[#EE7203] font-bold">
-                        Perfect for B1 & B2 students
+                        Perfect for B1 & B2 Ahead students
                       </span>{" "}
                       who are ready to bridge the gap between intermediate
                       knowledge and advanced fluency
@@ -675,7 +676,7 @@ const ConversationalClubLanding = () => {
             <div className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-[#EE7203]/20 to-[#FF3816]/20 backdrop-blur-lg rounded-full text-white border border-[#EE7203]/30 mb-6 sm:mb-8 flex-wrap gap-2">
               <Target className="w-4 sm:w-5 h-4 sm:h-5 text-[#EE7203] flex-shrink-0" />
               <span className="font-semibold text-sm sm:text-base">
-                Tailored for B1 & B2 Level — In person Learning
+                Tailored for B1 & B2 Ahead Level — In person Learning
               </span>
             </div>
           </div>
@@ -717,7 +718,7 @@ const ConversationalClubLanding = () => {
               {
                 icon: <TrendingUp className="w-5 sm:w-6 h-5 sm:h-6" />,
                 title: "Advanced Fluency Development",
-                desc: "Elevate your B1 & B2 skills to advanced conversational mastery through targeted practice",
+                desc: "Elevate your B1 & B2 Ahead skills to advanced conversational mastery through targeted practice",
               },
               {
                 icon: <Users className="w-5 sm:w-6 h-5 sm:h-6" />,
@@ -811,7 +812,7 @@ const ConversationalClubLanding = () => {
           <div className="text-center relative z-10">
             <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-[#EE7203]/30 to-[#FF3816]/30 backdrop-blur-lg rounded-full text-white/90 text-sm border border-[#EE7203]/50 mb-6">
               <Target className="w-4 h-4 mr-2 text-[#EE7203]" />
-              Designed for B1 & B2 Students — Premium In-Person Experience
+              Designed for B1 & B2 Ahead Students — Premium In-Person Experience
             </div>
 
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 sm:mb-6">
@@ -938,7 +939,7 @@ const ConversationalClubLanding = () => {
           <div className="border-t border-white/10 pt-6 sm:pt-8 text-center">
             <p className="text-white/60 text-sm">
               © 2025 Further Corporate. All rights reserved. | Exclusive
-              Conversational Club for B1 & B2 Students
+              Conversational Club for B1 & B2 Ahead Students
             </p>
           </div>
         </div>
